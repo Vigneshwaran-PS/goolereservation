@@ -1,12 +1,13 @@
+import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ReservationSyncJob } from './jobs/reservation-sync.job';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
   try {
-    console.log('Batch job started');
-    console.log('Running sample logic...');
-    console.log('Batch job completed');
+    const reservationSyncJob = app.get(ReservationSyncJob);
+    await reservationSyncJob.run();
   } finally {
     await app.close();
   }

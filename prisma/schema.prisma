@@ -4,10 +4,26 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
+}
+
+model MhLocation {
+  id           String   @id @db.VarChar(36)
+  merchantId   String   @map("merchant_id") @db.VarChar(36)
+  locationName String   @map("name") @db.VarChar(80)
+  locationSlug String?  @map("location_slug") @db.VarChar(128)
+  city         String?  @db.VarChar(64)
+  stateCd      String?  @map("state_cd") @db.VarChar(16)
+  countryCd    String   @map("country_cd") @db.VarChar(8)
+  latitude     Float?
+  longitude    Float?
+  phone        String?  @db.VarChar(20)
+  isEnabled    Boolean  @map("is_enabled")
+  timezoneCd   String?  @map("timezone_cd") @db.VarChar(32)
+
+  @@map("mh_location")
 }
