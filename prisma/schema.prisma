@@ -16,8 +16,12 @@ model MhLocation {
   merchantId   String   @map("merchant_id") @db.VarChar(36)
   locationName String   @map("name") @db.VarChar(80)
   locationSlug String?  @map("location_slug") @db.VarChar(128)
+  addressLine1 String?  @map("address_line1") @db.VarChar(255)
+  addressLine2 String?  @map("address_line2") @db.VarChar(255)
+  addressLine3 String?  @map("address_line3") @db.VarChar(255)
   city         String?  @db.VarChar(64)
   stateCd      String?  @map("state_cd") @db.VarChar(16)
+  postalCd     String?  @map("postal_cd") @db.VarChar(16)
   countryCd    String   @map("country_cd") @db.VarChar(8)
   latitude     Float?
   longitude    Float?

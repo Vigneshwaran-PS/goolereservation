@@ -3,10 +3,19 @@ import { PrismaService } from '../../database/prisma/prisma.service';
 
 export type LocationLite = {
   id: string;
+  merchantId: string;
   locationName: string;
   locationSlug: string | null;
+  addressLine1: string | null;
+  addressLine2: string | null;
+  addressLine3: string | null;
   city: string | null;
   stateCd: string | null;
+  postalCd: string | null;
+  countryCd: string;
+  latitude: number | null;
+  longitude: number | null;
+  phone: string | null;
   timezoneCd: string | null;
   isEnabled: boolean;
 };
@@ -25,13 +34,24 @@ export class LocationRepository {
         id: {
           in: locationIds,
         },
+        isEnabled: true,
+        countryCd: 'US',
       },
       select: {
         id: true,
+        merchantId: true,
         locationName: true,
         locationSlug: true,
+        addressLine1: true,
+        addressLine2: true,
+        addressLine3: true,
         city: true,
         stateCd: true,
+        postalCd: true,
+        countryCd: true,
+        latitude: true,
+        longitude: true,
+        phone: true,
         timezoneCd: true,
         isEnabled: true,
       },

@@ -5,6 +5,9 @@ import { CryptoService } from './common/crypto/crypto.service';
 import { PrismaService } from './database/prisma/prisma.service';
 import { ReservationSyncJob } from './jobs/reservation-sync.job';
 import { LocationRepository } from './modules/location/location.repository';
+import { MerchantFeedService } from './modules/feed/merchant/merchant-feed.service';
+import { FeedFileService } from './modules/feed/common/feed-file.service';
+import { ServiceFeedService } from './modules/feed/service/service-feed.service';
 
 @Module({
   imports: [],
@@ -14,6 +17,9 @@ import { LocationRepository } from './modules/location/location.repository';
     CryptoService,
     PrismaService,
     LocationRepository,
+    FeedFileService,
+    MerchantFeedService,
+    ServiceFeedService,
     ReservationSyncJob,
   ],
 })
