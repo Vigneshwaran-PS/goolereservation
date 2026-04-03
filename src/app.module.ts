@@ -8,6 +8,8 @@ import { LocationRepository } from './modules/location/location.repository';
 import { MerchantFeedService } from './modules/feed/merchant/merchant-feed.service';
 import { FeedFileService } from './modules/feed/common/feed-file.service';
 import { ServiceFeedService } from './modules/feed/service/service-feed.service';
+import { SftpUploadService } from './modules/feed/common/sftp-upload.service';
+import { AvailabilityFeedService } from './modules/feed/availability/availability-feed.service';
 
 @Module({
   imports: [],
@@ -18,8 +20,10 @@ import { ServiceFeedService } from './modules/feed/service/service-feed.service'
     PrismaService,
     LocationRepository,
     FeedFileService,
+    SftpUploadService,
     MerchantFeedService,
     ServiceFeedService,
+    AvailabilityFeedService,
     ReservationSyncJob,
   ],
 })

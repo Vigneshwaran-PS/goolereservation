@@ -6,6 +6,7 @@ export type LocationLite = {
   merchantId: string;
   locationName: string;
   locationSlug: string | null;
+  attributes: string | null;
   addressLine1: string | null;
   addressLine2: string | null;
   addressLine3: string | null;
@@ -42,6 +43,7 @@ export class LocationRepository {
         merchantId: true,
         locationName: true,
         locationSlug: true,
+        attributes: true,
         addressLine1: true,
         addressLine2: true,
         addressLine3: true,

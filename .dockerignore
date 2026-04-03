@@ -5,3 +5,7 @@ dist
 npm-debug.log
 .DS_Store
 coverage
+logs
+keys
+.env
+.env.*

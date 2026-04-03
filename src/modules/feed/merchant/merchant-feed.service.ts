@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { DateTime } from 'luxon';
 import { LocationLite, LocationRepository } from '../../location/location.repository';
 import { FeedFileService } from '../common/feed-file.service';
 import { MerchantEntity } from './merchant-feed.types';
@@ -35,8 +36,8 @@ export class MerchantFeedService {
         processing_instruction: 'PROCESS_AS_COMPLETE',
         shard_number: 0,
         total_shards: 1,
-        nonce: `${Date.now()}`,
-        generation_timestamp: Math.floor(Date.now() / 1000),
+        nonce: `${DateTime.utc().toMillis()}`,
+        generation_timestamp: DateTime.utc().toUnixInteger(),
       },
       merchant: merchants,
     };

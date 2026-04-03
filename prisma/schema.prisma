@@ -16,6 +16,7 @@ model MhLocation {
   merchantId   String   @map("merchant_id") @db.VarChar(36)
   locationName String   @map("name") @db.VarChar(80)
   locationSlug String?  @map("location_slug") @db.VarChar(128)
+  attributes   String?
   addressLine1 String?  @map("address_line1") @db.VarChar(255)
   addressLine2 String?  @map("address_line2") @db.VarChar(255)
   addressLine3 String?  @map("address_line3") @db.VarChar(255)
@@ -30,4 +31,41 @@ model MhLocation {
   timezoneCd   String?  @map("timezone_cd") @db.VarChar(32)
 
   @@map("mh_location")
+}
+
+model MhLocationHours {
+  id                  String  @id @db.VarChar(36)
+  locationId          String  @map("location_id") @db.VarChar(36)
+  hourType            String  @map("hour_type") @db.VarChar(16)
+  weekday             String  @db.VarChar(8)
+  openingTime         String? @map("opening_time") @db.VarChar(16)
+  closingTime         String? @map("closing_time") @db.VarChar(16)
+  notSameDayClosing   Int?    @map("not_same_day_closing")
+  isReservationEnable Int?    @map("is_reservation_enable")
+  isEnabled           Int?    @map("is_enabled")
+
+  @@map("mh_location_hours")
+}
+
+model MhTable {
+  id          String  @id @db.VarChar(36)
+  locationId  String  @map("location_id") @db.VarChar(36)
+  attributes  Json?
+  minCapacity Int?    @map("min_capacity")
+  maxCapacity Int?    @map("max_capacity")
+  isEnabled   Int?    @map("is_enabled")
+
+  @@map("mh_table")
+}
+
+model MhReservation {
+  id                String  @id @db.VarChar(36)
+  locationId        String  @map("location_id") @db.VarChar(36)
+  partySize         Int?    @map("party_size")
+  reservationDate   String? @map("reservation_date") @db.VarChar(16)
+  reservationSlot   String? @map("reservation_slot") @db.VarChar(16)
+  isReservation     Int?    @map("is_reservation")
+  reservationStatus String? @map("reservation_status") @db.VarChar(4)
+
+  @@map("mh_reservation")
 }
